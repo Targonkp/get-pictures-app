@@ -16,6 +16,7 @@ function getImages () {
     let url = new URL('https://picsum.photos/v2/list');
     url.searchParams.set('limit', inputValue);
 
+    if (inputValue < 10){
         fetch(url)
             .then((response) => {
                 //получаю статус ответа
@@ -50,6 +51,11 @@ function getImages () {
             .catch((error) => {
                 console.log(`ошибка, статус запроса - ${error.status}`)
             })
+    }
+    else
+    {
+        alert('Введите число от 1 до 9');
+    }
 }
 
 //навешиваю функцию с асинхронным fetch запросом на кнопку
