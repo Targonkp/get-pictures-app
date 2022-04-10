@@ -62,10 +62,30 @@ function getImages () {
 
 btnEl.addEventListener(
     'click',
-    getImages
+    (event) => {
+        event.preventDefault();
+        getImages();
+    }
 )
 
 clearEl.addEventListener(
     'click',
     removeChild
+)
+
+//навешиваю обработчик событий на обертку (div с классом change-theme-wrap) с двумя переключателями тем
+document.querySelector('.change-theme-wrap').addEventListener(
+    'click',
+    (event)=>{
+        document.querySelectorAll('.change-theme').forEach(item => item.classList.remove('change-theme-active'));
+        let changeTheme = event.target.classList.item(1);
+        if (changeTheme === "change-theme-light"){
+            document.body.style.background = '#eff28f';
+            event.target.classList.toggle('change-theme-active');
+        }
+        else{
+            document.body.style.background = '#6d705f';
+            event.target.classList.toggle('change-theme-active');
+        }
+}
 )
